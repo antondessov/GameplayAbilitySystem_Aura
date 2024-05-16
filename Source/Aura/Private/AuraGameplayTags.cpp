@@ -83,4 +83,9 @@ FString("Physical Resistance Type"));
 	
 	GameplayTags.Effects_HitReact = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Effects.HitReact"),
 	FString("Hit Reaction Tag"));
+
+	// Abilities
+	
+	GameplayTags.Abilities_Attack = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Attack"),
+	FString("Attack Ability Tag"));
 }
