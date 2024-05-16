@@ -107,8 +107,11 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 					Spline->AddSplinePoint(PointLoc, ESplineCoordinateSpace::World);
 				}
 				//instead of a random point in space, we set the cached destination to the last point available
-				CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num() - 1];
-				bAutoRunning = true;
+				if (NavPath->PathPoints.Num() > 0)
+				{
+					CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num() - 1];
+					bAutoRunning = true;
+				}
 			}
 		}
 		FollowTime = 0.f;
