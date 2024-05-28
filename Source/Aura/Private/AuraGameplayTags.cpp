@@ -78,6 +78,11 @@ FString("Physical Resistance Type"));
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Fire, GameplayTags.Attributes_Resistance_Fire);
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Lightning, GameplayTags.Attributes_Resistance_Lightning);
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Physical, GameplayTags.Attributes_Resistance_Physical);
+
+	// Meta Attributes
+
+	GameplayTags.Attributes_Meta_XP = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Attributes.Meta.XP"),
+FString("Incoming XP Meta Attribute"));
 	
 	// Effects
 	
