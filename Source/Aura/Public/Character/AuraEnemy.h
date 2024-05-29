@@ -28,7 +28,7 @@ public:
 	/**end Enemy Interface */
 
 	/**Combat Interface */
-	virtual int32 GetPlayerLevel();
+	virtual int32 GetPlayerLevel_Implementation();
 	virtual void Die() override;
 	virtual void SetCombatTarget_Implementation(AActor* InCombatTarget) override;
 	virtual AActor* GetCombatTarget_Implementation() const override;

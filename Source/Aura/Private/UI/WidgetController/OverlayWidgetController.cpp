@@ -24,6 +24,15 @@ void UOverlayWidgetController::BroadcastInitialValues()
 void UOverlayWidgetController::BindCallbacksToDependencies()
 {
 	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AuraPlayerState->OnXpChangeDelegate.AddUObject(this, &UOverlayWidgetController::OnXPChanged);
+	AuraPlayerState->OnLevelChangeDelegate.AddLambda(
+	[this](int32 NewLevel)
+		{
+			OnPlayerLevelChangedDelegate.Broadcast(NewLevel);	
+		}
+	);
+
+	
 	const UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);
 	
 	
@@ -87,7 +96,7 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	}
 
 	
-	AuraPlayerState->OnXpChangeDelegate.AddUObject(this, &UOverlayWidgetController::OnXPChanged);
+	
 }
 
 void UOverlayWidgetController::OnInitializeStartupAbilities(UAuraAbilitySystemComponent* AuraASC)
