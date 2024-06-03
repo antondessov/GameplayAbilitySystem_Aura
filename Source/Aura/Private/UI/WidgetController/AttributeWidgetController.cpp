@@ -5,6 +5,7 @@
 
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "AbilitySystem/Data/AttributeInfo.h"
+#include "Player/AuraPlayerState.h"
 
 
 void UAttributeWidgetController::BindCallbacksToDependencies()
@@ -21,6 +22,21 @@ void UAttributeWidgetController::BindCallbacksToDependencies()
 		}
 	);
 	}
+	
+	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AuraPlayerState->OnAttributePointChangeDelegate.AddLambda(
+	[this](int32 NewAttributePoints)
+		{
+			AttributePointChangeDelegate.Broadcast(NewAttributePoints);
+		}
+	);
+	
+	AuraPlayerState->OnSpellPointsChangeDelegate.AddLambda(
+	[this](int32 NewSpellPoints)
+		{
+			SpellPointChangeDelegate.Broadcast(NewSpellPoints);
+		}
+	);
 }
 
 void UAttributeWidgetController::BroadcastInitialValues()
@@ -34,11 +50,8 @@ void UAttributeWidgetController::BroadcastInitialValues()
 	}
 
 	
-	/*  Old system for reference
-	FAuraAttributeInfo StrengthInfo = AttributeInfo->FindAttributeInfoForTag(FAuraGameplayTags::Get().Attributes_Primary_Strength);
-	StrengthInfo.AttributeValue = AS->GetStrength();
-	AttributeInfoDelegate.Broadcast(StrengthInfo);
-	*/
+	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AttributePointChangeDelegate.Broadcast(AuraPlayerState->GetAttributePoints());
 	
 }
 
