@@ -78,7 +78,7 @@ private:
 	void OnRep_AttributePoint(int32 OldAttributePoints);
 
 	UPROPERTY(VisibleAnywhere, ReplicatedUsing= OnRep_SpellPoints)
-	int32 SpellPoints = 0;
+	int32 SpellPoints = 1;
 
 	UFUNCTION()
 	void OnRep_SpellPoints(int32 OldSpellPoints);
