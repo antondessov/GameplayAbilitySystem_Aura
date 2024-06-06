@@ -8,6 +8,7 @@
 #include "UI/HUD/AuraHUD.h"
 #include "AuraAbilitySystemLibrary.generated.h"
 
+class UAbilityInfo;
 struct FGameplayEffectContextHandle;
 class UOverlayWidgetController;
 class UAbilitySystemComponent;
@@ -41,6 +42,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category= "AuraAbilitySystemLibrary|CharacterClassDefaults")
 	static UCharacterClassInfo* GetCharacterClassInfo(const UObject* WorldContextObject);
 
+	UFUNCTION(BlueprintCallable, Category= "AuraAbilitySystemLibrary|CharacterClassDefaults")
+	static UAbilityInfo* GetAbilityInfo(const UObject* WorldContextObject);
+	
 	UFUNCTION(BlueprintPure,Category= "AuraAbilitySystemLibrary|GameplayEffects")
 	static bool IsBlockedHit(const FGameplayEffectContextHandle& EffectContextHandle);
 

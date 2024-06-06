@@ -70,9 +70,11 @@ static const FAuraGameplayTags& Get() {return GameplayTags;}
  
  
  FGameplayTag Abilities_Fire_FireBolt;
+ FGameplayTag Abilities_Lightning_Electrocute;
 
  FGameplayTag Cooldown_Fire_FireBolt;
-
+ FGameplayTag Cooldown_Lightning_Electrocute;
+ 
  FGameplayTag CombatSocket_Weapon;
  FGameplayTag CombatSocket_RightHand;
  FGameplayTag CombatSocket_LeftHand;
