@@ -96,6 +96,9 @@ FString("Incoming XP Meta Attribute"));
 	FString("Hit Reaction Tag"));
 
 	// Abilities
+
+	GameplayTags.Abilities_None = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.None"),
+	FString("No Ability - like the nullptr for Ability Tags"));
 	
 	GameplayTags.Abilities_Attack = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Attack"),
 	FString("Attack Ability Tag"));
