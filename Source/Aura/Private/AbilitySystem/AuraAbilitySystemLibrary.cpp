@@ -204,7 +204,7 @@ float UAuraAbilitySystemLibrary::GetDebuffFrequency(const FGameplayEffectContext
 {
 	if (const FAuraGameplayEffectContext* AuraEffectContext = static_cast<const FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
 	{
-		return AuraEffectContext->GetDebuffDuration();
+		return AuraEffectContext->GetDebuffFrequency();
 	}
 	return 0.f;
 }
@@ -213,7 +213,7 @@ float UAuraAbilitySystemLibrary::GetDebuffDuration(const FGameplayEffectContextH
 {
 	if (const FAuraGameplayEffectContext* AuraEffectContext = static_cast<const FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
 	{
-		return AuraEffectContext->GetDebuffFrequency();
+		return AuraEffectContext->GetDebuffDuration();
 	}
 	return 0.f;
 }
@@ -252,7 +252,7 @@ void UAuraAbilitySystemLibrary::SetIsSuccesfulDebuff(FGameplayEffectContextHandl
 {
 	if(FAuraGameplayEffectContext* AuraEffectContext = static_cast<FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
 	{
-		AuraEffectContext->SetIsCriticalHit(bInIsSuccessfulDebuff);
+		AuraEffectContext->SetIsSuccessfulDebuff(bInIsSuccessfulDebuff);
 	}
 }
 
