@@ -70,7 +70,7 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation(const FVector InImp
 
 	UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
 	bDead = true;
-	OnDeath.Broadcast(this);
+	OnDeathDelegate.Broadcast(this);
 }
 
 void AAuraCharacterBase::BeginPlay()
@@ -157,9 +157,9 @@ FOnASCRegistered AAuraCharacterBase::GetOnAscRegisteredDelegate()
 	return OnAscRegistered;
 }
 
-FOnDeath AAuraCharacterBase::GetOnDeathDelegate()
+FOnDeathSignature& AAuraCharacterBase::GetOnDeathDelegate()
 {
-	return OnDeath;
+	return OnDeathDelegate;
 }
 
 USkeletalMeshComponent* AAuraCharacterBase::GetWeapon_Implementation()
