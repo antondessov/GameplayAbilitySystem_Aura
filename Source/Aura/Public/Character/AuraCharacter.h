@@ -44,6 +44,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UNiagaraComponent> LevelUpNiagaraComponent;
+
+protected:
+	virtual void OnRep_Stunned() override;
+	virtual void OnRep_Burned() override;
 	
 private:
 	virtual void InitAbilityActorInfo() override;

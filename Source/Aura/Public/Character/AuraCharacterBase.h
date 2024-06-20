@@ -26,6 +26,7 @@ public:
 	AAuraCharacterBase();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const {return AttributeSet;}
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	/** Combat Interface**/
 	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
@@ -39,7 +40,7 @@ public:
 	virtual int32 GetMinionCount_Implementation() override;
 	virtual void IncrementMinionCount_Implementation(int32 Amount) override;
 	virtual ECharacterClass GetCharacterClass_Implementation() override;
-	virtual FOnASCRegistered GetOnAscRegisteredDelegate() override;
+	virtual FOnASCRegistered& GetOnAscRegisteredDelegate() override;
 	virtual FOnDeathSignature& GetOnDeathDelegate() override;
 	virtual USkeletalMeshComponent* GetWeapon_Implementation() override;
 	
@@ -53,6 +54,10 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TArray<FTaggedMontage> AttackMontages;
+
+
+
+	virtual void StunTagChanged(const FGameplayTag CallbackTag, int32 NewCount);
 	
 protected:
 	virtual void BeginPlay() override;
@@ -129,6 +134,25 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UDebuffNiagaraComponent> BurnDebuffComponent;
 
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<UDebuffNiagaraComponent> StunDebuffComponent;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
+	float BaseWalkSpeed = 250.f;
+
+	UPROPERTY(ReplicatedUsing=OnRep_Stunned, BlueprintReadOnly)
+	bool bIsStunned = false;
+
+	UFUNCTION()
+	virtual void OnRep_Stunned();
+
+	UPROPERTY(ReplicatedUsing=OnRep_Burned, BlueprintReadOnly)
+	bool bIsBurned = false;
+
+	UFUNCTION()
+	virtual void OnRep_Burned();
+
+	
 private:
 
 	UPROPERTY(EditAnywhere, Category = "Abilities")
