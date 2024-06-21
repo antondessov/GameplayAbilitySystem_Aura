@@ -167,11 +167,24 @@ FString("Type Passive"));
 	
 	GameplayTags.Abilities_Type_None = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Type.None"),
 FString("Type None"));
+
+	//Passive spells
+
+	GameplayTags.Abilities_Passive_LifeSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.LifeSiphon"),
+FString("Passive Ability LifeSiphon"));
+
+	GameplayTags.Abilities_Passive_ManaSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.ManaSiphon"),
+FString("Passive Ability ManaSiphon"));
+
+	GameplayTags.Abilities_Passive_HaloOfProtection = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.HaloOfProtection"),
+FString("Passive Ability HaloOfProtection"));
 	
 	// Cooldown
 	
 	GameplayTags.Cooldown_Fire_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Cooldown.Fire.FireBolt"),
 FString("FireBolt Cooldown Tag"));
+
+	
 	
 	// Combat sockets
 	
