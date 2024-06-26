@@ -12,6 +12,7 @@
 class UNiagaraSystem;
 class UAbilitySystemComponent;
 
+
 USTRUCT(BlueprintType)
 struct FTaggedMontage
 {
@@ -32,6 +33,8 @@ struct FTaggedMontage
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnASCRegistered, UAbilitySystemComponent*);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeathSignature, AActor*, DeadActor);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnDamageSignature, float /*DamageAmount*/)
+
 
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI, BlueprintType)
@@ -92,6 +95,7 @@ public:
 
 	virtual FOnASCRegistered& GetOnAscRegisteredDelegate() = 0;
 	virtual FOnDeathSignature& GetOnDeathDelegate() = 0;
+	virtual FOnDamageSignature& GetOnDamageDelegate() = 0;
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void SetInShockLoop(bool bInLoop);
