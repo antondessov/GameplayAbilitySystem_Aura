@@ -233,5 +233,9 @@ FString("FireBolt Cooldown Tag"));
 
 	GameplayTags.Player_Block_InputHeld = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Player.Block.InputHeld"),
 	FString("Block InputHeld"));
-	
+
+	// Gameplay Cues
+
+	GameplayTags.GameplayCue_FireBlast = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("GameplayCue.FireBlast"),
+	FString("FireBlast GameplayCue Tag"));
 }

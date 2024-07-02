@@ -112,6 +112,8 @@ static const FAuraGameplayTags& Get() {return GameplayTags;}
  FGameplayTag Player_Block_InputHeld;
  FGameplayTag Player_Block_CursorTrace;
 
+ FGameplayTag GameplayCue_FireBlast;
+
 private:
  static FAuraGameplayTags GameplayTags;
 };
